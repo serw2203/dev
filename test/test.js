@@ -31,8 +31,8 @@ describe("Пример тестирования 2", () => {
         expect(result).to.equal(13);
     });
 
-    it("Вычитаем   2 числа: 9 - 9 = 1 (expect)", () => {
+    it("Вычитаем   2 числа: 9 - 9 = 0 (expect)", () => {
         let result = sub(9, 9);
-        expect(result).to.equal(1);
+        expect(result).to.equal(0);
     });
 });
