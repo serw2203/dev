@@ -1,1 +1,1 @@
-console.log("Hello world")
+module.exports.summa = (x, y) => x + y;
