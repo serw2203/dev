@@ -1,38 +1,47 @@
-const {expect, assert} = require('chai');
-const {sum, sub} = require('../src/index');
+const {expect} = require('chai');
+const {quadraticEquation} = require('../src/index');
 
-describe("Пример тестирования", () => {
-
-    it("Складываем 2 числа: 2 + 3 =  5 (assert)", () => {
-        let result = sum(2, 3);
-        assert.equal(result, 5);
-    });
-  
-    it("Складываем 2 числа: 2 + 3 =  5 (expect)", () => {
-        let result = sum(2, 3);
-        expect(result).to.equal(5);
+describe("Решение уравнения", function () {
+    it("когда null * x ^2 = 0 тогда ошибка 'не число'", function () {
+        expect(() => quadraticEquation(null, 1, 1)).to.throw('не число');
+        expect(() => quadraticEquation(null)).to.throw('не число');
     });
 
-    it("Вычитаем   2 числа: 2 - 3 = -1 (expect)", () => {
-        let result = sub(2, 3);
-        expect(result).to.equal(-1);
-    });
-});
-
-describe("Пример тестирования 2", () => {
-
-    it("Складываем 2 числа: 8 + 9 =  17 (assert)", () => {
-        let result = sum(8, 9);
-        assert.equal(result, 17);
-    });
-  
-    it("Складываем 2 числа: 6 + 7 =  13 (expect)", () => {
-        let result = sum(6, 7);
-        expect(result).to.equal(13);
+    it("когда 12.13.14 * x ^2 = 0 тогда ошибка 'не число'", function () {
+        expect(() => quadraticEquation('12.13.14', 1, 1)).to.throw('не число');
+        expect(() => quadraticEquation('12.13.14')).to.throw('не число');
     });
 
-    it("Вычитаем   2 числа: 9 - 9 = 0 (expect)", () => {
-        let result = sub(9, 9);
-        expect(result).to.equal(0);
+    it("когда 0 * x ^2 - x + 1 = 0 тогда ошибка 'не квадратное уравнение'", function () {
+        expect(() => quadraticEquation(0)).to.throw('не квадратное уравнение');
+        expect(() => quadraticEquation(0, 1, 1)).to.throw('не квадратное уравнение');
+    });
+
+    it("когда x ^ 2 + 4 * x + 6 = 0 тогда ошибка 'решения нет'", function () {
+        expect(() => quadraticEquation(1, 4, 6)).to.throw('решения нет');
+    });
+
+    it("когда x ^ 2 - 5 * x + 6 = 0 тогда x1 = 2, x2 = 3", function () {
+        expect(quadraticEquation(1, -5, 6)).to.deep.equal({x1: 2, x2: 3});
+    });
+
+    it("когда x ^ 2 - Number.MAX_VALUE * x + 6 = 0 тогда x1 = -Infinity, x2 = Infinity", function () {
+        expect(quadraticEquation(1, Number.MAX_VALUE, 6)).to.deep.equal({x1: -Infinity, x2: Infinity});
+    });
+
+    it("когда x ^ 2 - 5 * x + Number.MAX_VALUE = 0 тогда ошибка 'решения нет'", function () {
+        expect(() => quadraticEquation(1, -5, Number.MAX_VALUE)).to.throw('решения нет');
+    });
+
+    it("когда Number.MAX_VALUE * x ^ 2 - 5 * x + 6 = 0 тогда ошибка 'решения нет'", function () {
+        expect(() => quadraticEquation(Number.MAX_VALUE, -5, 6)).to.throw('решения нет');
+    });
+
+    it("когда x ^ 2 - 5 * x = 0 тогда x1 = 0, x2 = 5", function () {
+        expect(quadraticEquation(1, -5, 0)).to.deep.equal({x1: 0, x2: 5});
+    });
+
+    it("когда 4 * x ^ 2 = 0 тогда x1 = 0", function () {
+        expect(quadraticEquation(4, 0, 0)).to.deep.equal({x1: 0});
     });
 });
