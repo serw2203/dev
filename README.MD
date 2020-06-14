@@ -1,2 +1,2 @@
-# neural-intro
+# start
 Тут мы с Егором будем разбираться с JavaScript ом
