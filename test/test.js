@@ -1,6 +1,7 @@
 const {expect} = require('chai');
 const {quadraticEquation} = require('../src/index');
 
+//тесты
 describe("Решение квадратного уравнения", function () {
     it("когда null * x ^2 = 0 тогда ошибка 'не число'", function () {
         expect(() => quadraticEquation(null, 1, 1)).to.throw('не число');
