@@ -46,7 +46,6 @@ class Transport {
     }
 
     getInfo() {
-        console.log(this)
         return `${this.vendor}, ${this.model}`;
     }
 
@@ -66,10 +65,6 @@ class Car extends Transport {
     }
 }
 
-var t = new Car('1', '2', '3', '4');
 
-console.log(t.getInfo())
 
-console.log(t.getDoorsCount())
-
-module.exports = { quadraticEquation, Transport };
+module.exports = { quadraticEquation, Transport, Car };
