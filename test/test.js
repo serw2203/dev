@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const {quadraticEquation} = require('../src/index');
+const {quadraticEquation, Transport} = require('../src/index');
 
 describe("Решение квадратного уравнения", function () {
     it("когда null * x ^2 = 0 тогда ошибка 'не число'", function () {
