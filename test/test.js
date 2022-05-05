@@ -4,7 +4,6 @@ const {quadraticEquation, Transport, Car} = require('../src/index');
 describe("Объект new Transport('1', '2', '3', '4')", function () {
     it("getInfo () = '3, 4'", function () {
         var t = new Transport('1', '2', '3', '4');
-console.log('======= > ',t);
         expect(t.getInfo()).to.equal('3, 4');
     });
 });
@@ -12,7 +11,6 @@ console.log('======= > ',t);
 describe("Объект new Car('1', '2', '3', '4')", function () {
     it("getInfo () = '1, 2'", function () {
         var c = new Car('1', '2', '3', '4');
-console.log('======= > ', c)
         expect(c.getInfo()).to.equal('1, 2');
     });
 });
